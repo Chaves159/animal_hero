@@ -1,7 +1,7 @@
 <h1>Editing Users</h1>
+<p>Seu ID: <%=session[:user_id] %></p>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
-#criar botão
+
+<%= link_to 'Back', user_path %>
