@@ -26,7 +26,6 @@ class OngsController < ApplicationController
   def create
     @ong = Ong.new(ong_params)
     @ong.user_id = session[:user_id]
-
     respond_to do |format|
       if @ong.save
         format.html { redirect_to @ong, notice: 'Ong criada com sucesso' }
