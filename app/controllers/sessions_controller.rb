@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:id_user] = user.id
       sign_in(user)
-      redirect_to user
+      redirect_to ongs_path
     else
       flash.now[:danger] = 'Email e Senha inválidos'
       render 'new'
