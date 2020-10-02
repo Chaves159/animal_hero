@@ -8,7 +8,7 @@ class CreateAnimals < ActiveRecord::Migration[5.2]
       t.decimal :peso
       t.date :data_nascimento
       t.string :situacao
-      t.references :ong_id
+      t.references :ong
 
       t.timestamps
     end

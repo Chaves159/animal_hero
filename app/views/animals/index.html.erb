@@ -27,10 +27,10 @@
         <td><%= animal.peso %></td>
         <td><%= animal.data_nascimento %></td>
         <td><%= animal.situacao %></td>
-        <td><%= animal.ong_id %></td>
-        <td><%= link_to 'Show', animal %></td>
-        <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
-        <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= animal.ong_id%></td>
+        <td><%= link_to 'Mostrar', animal %></td>
+        <td><%= link_to 'Editar', edit_animal_path(animal) %></td>
+        <td><%= link_to 'Apagar', animal, method: :delete, data: { confirm: 'Você Tem Certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Animal', new_animal_path %>
+<%= link_to 'Cadastrar Animal', new_animal_path %>
