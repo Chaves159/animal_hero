@@ -1,5 +1,6 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :set_id_ong, only: [:new, :create, :edit, :update]
 
   # GET /animals
   # GET /animals.json
@@ -17,6 +18,7 @@ class AnimalsController < ApplicationController
     @animal = Animal.new
   end
 
+
   # GET /animals/1/edit
   def edit
   end
@@ -25,7 +27,7 @@ class AnimalsController < ApplicationController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-
+    # @animal.ong_id = session[:ong_id]
     respond_to do |format|
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
@@ -62,6 +64,9 @@ class AnimalsController < ApplicationController
   end
 
   private
+  def set_id_ong
+    @id_ong = Ong.all.map{|ong|[ong.id]}
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_animal
       @animal = Animal.find(params[:id])

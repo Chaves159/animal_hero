@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= form.label :nome %>
     <%= form.text_field :nome, class: 'form-control' %>
@@ -28,7 +27,7 @@
 
   <div class="form-group">
     <%= form.label :sexo %>
-    <%= form.text_field :sexo, class: 'form-control' %>
+    <%= form.select :sexo,['Macho', 'Fêmea'],{include_blank: "Selecione"}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -43,12 +42,13 @@
 
   <div class="form-group">
     <%= form.label 'Situação' %>
-    <%= form.text_field :situacao, class: 'form-control' %>
+    <%= form.select :situacao,['Abandonado', 'Propriedade'], {include_blank: "Selecione"}, class: 'form-control'%>
   </div>
 
   <div class="form-group">
     <%= form.label :ong_id %>
-    <%= form.text_field :ong_id, class: 'form-control' %>
+    <%= form.select("ong_id", @id_ong, {include_blank: "Selecione"},  class: 'form-control' )  %>
+
   </div>
 
   <div class="actions">
