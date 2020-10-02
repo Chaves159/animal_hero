@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :data_nascimento %>
-    <%= form.date_select :data_nascimento %>
+    <%= form.date_select :data_nascimento, :order =>[:day,:month, :year], :use_month_numbers =>true %>
   </div>
 
   <div class="field">
