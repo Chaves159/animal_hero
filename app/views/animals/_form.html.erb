@@ -11,47 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :raca %>
-    <%= form.text_field :raca %>
+  <div class="form-group">
+    <%= form.label 'Raça' %>
+    <%= form.text_field :raca, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :especie %>
-    <%= form.text_field :especie %>
+    <%= form.text_field :especie, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :sexo %>
-    <%= form.text_field :sexo %>
+    <%= form.text_field :sexo, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :peso %>
-    <%= form.text_field :peso %>
+    <%= form.text_field :peso, class: 'form-control'%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :data_nascimento %>
-    <%= form.date_select :data_nascimento, :order =>[:day,:month, :year], :use_month_numbers =>true %>
+    <%= form.date_select :data_nascimento, :order =>[:day,:month, :year], :use_month_numbers =>true%>
   </div>
 
-  <div class="field">
-    <%= form.label :situacao %>
-    <%= form.text_field :situacao %>
+  <div class="form-group">
+    <%= form.label 'Situação' %>
+    <%= form.text_field :situacao, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :ong_id %>
-    <%= form.text_field :ong_id %>
+    <%= form.text_field :ong_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', animals_path, class:"btn btn-primary" %>
   </div>
 <% end %>
