@@ -28,6 +28,7 @@
     <th><%= model_class.human_attribute_name(:nome) %></th>
     <th><%= model_class.human_attribute_name(:email) %></th>
     <th><%= model_class.human_attribute_name(:estado) %></th>
+    <th><%= model_class.human_attribute_name(:user_id) %></th>
     <th><%= model_class.human_attribute_name(:logo) %></th>
     <th style="width: 170px" ><%=t '.actions', :default => t("helpers.actions") %></th>
   </tr>
@@ -39,6 +40,7 @@
       <td><%= ongs.nome %></td>
       <td><%= ongs.email %></td>
       <td><%= ongs.estado %></td>
+      <td><%= ongs.user.name%></td>
       <td><%= image_tag ongs.logo, size: "60x65" %></td>
 
       <td>
