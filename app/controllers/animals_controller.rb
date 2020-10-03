@@ -7,7 +7,7 @@ class AnimalsController < ApplicationController
   def index
     @ong = Ong.where(user_id: session[:user_id])
     if params[:situacao].present?
-      @animals = Animal.where(situacao: params[:situacao])
+      @animals = Animal.where("situacao LIKE ?", "%#{params[:situacao]}%")if params[:situacao].present?
       @animals = @animals.where(ong_id: @ong.ids)
     end
     if params[:nome].present?
