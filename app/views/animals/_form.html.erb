@@ -2,6 +2,7 @@
   <% if animal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
       <ul>
         <% animal.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,27 +14,44 @@
   <div class="form-group">
     <%= form.label :nome %>
     <%= form.text_field :nome, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :ong_id%>
+    <%= form.select("ong_id",  @id_ong  , {include_blank:"Selecione..."}) %>
+  </div>
+  <div class="form-group">
+    <%= form.label :raça %>
+    <%= form.text_field :raca, class: 'form-control' %>
+  </div>
 
-    <div class="form-group">
-      <%= form.label :sexo %>
-      <%= form.select :sexo,['Macho', 'Fêmea'],{include_blank: "Selecione"}, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <div class="form-group">
-        <%= form.label 'Situação' %>
-        <%= form.select :situacao,['Abandonado', 'Propriedade'], {include_blank: "Selecione"}, class: 'form-control'%>
-      </div>
+  <div class="form-group">
+    <%= form.label :especie %>
+    <%= form.text_field :especie, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :situação %>
+    <%= form.select :situacao, ['Abandono', 'Propriedade']%>
+  </div>
+  <div class="form-group">
+    <%= form.label :peso %>
+    <%= form.text_field :peso, class: 'form-control' %>
+  </div>
 
-      <div class="form-group">
-        <%= form.label :ong_id %>
-        <%= form.select("ong_id", @id_ong, {include_blank: "Selecione"},  class: 'form-control' )  %>
 
-      </div>
 
-      <div class="actions">
-        <%= form.submit nil, class: 'btn btn-primary' %>
-        <%= link_to 'Voltar', animals_path, class:"btn btn-primary" %>
-      </div>
-    </div>
-  </div>  
-<%end%>
+  <div class="form-group">
+    <%= form.label :data_nascimento%>
+    <%= form.date_select :data_nascimento, order: [:day, :month, :year], :use_month_numbers => true %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :sexo %>
+    <%= form.select :sexo, ['Femea', 'Macho'] %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.submit nil, class: 'btn btn-primary'%>
+  </div>
+<% end %>
