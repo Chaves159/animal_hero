@@ -1,14 +1,12 @@
 <%= form_tag(ongs_path, method: 'get')do %>
-  <div class = "row">
+  <div class = "form">
     <div class="form">
       <%= label_tag :nome %>
       <%= text_field_tag :nome%>
+      <%=button_tag(value: "commit", type: 'submit',class: "btn btn-primary") do %>
+        Pesquisar
+      <%end %>
     </div>
-  </div>
-  <div class="row">
-    <%=button_tag(value: "commit", type: 'submit',class: "btn") do %>
-      Pesquisar
-    <%end %>
   </div>
 
 
@@ -30,6 +28,7 @@
     <th><%= model_class.human_attribute_name(:nome) %></th>
     <th><%= model_class.human_attribute_name(:email) %></th>
     <th><%= model_class.human_attribute_name(:estado) %></th>
+    <th><%= model_class.human_attribute_name(:user_id) %></th>
     <th><%= model_class.human_attribute_name(:logo) %></th>
     <th style="width: 170px" ><%=t '.actions', :default => t("helpers.actions") %></th>
   </tr>
@@ -41,6 +40,7 @@
       <td><%= ongs.nome %></td>
       <td><%= ongs.email %></td>
       <td><%= ongs.estado %></td>
+      <td><%= ongs.user.name%></td>
       <td><%= image_tag ongs.logo, size: "60x65" %></td>
 
       <td>
@@ -51,7 +51,7 @@
         <%= link_to content_tag(:i,'Excluir', class: ["fas", "fa-trash"]),
                     ong_path(ongs),
                     :method => :delete,
-                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem Certeza?')) },
                     :class => 'btn btn-xs btn-danger' %>
       </td>
     </tr>
