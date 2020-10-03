@@ -8,14 +8,14 @@ class AnimalsController < ApplicationController
     @ong = Ong.where(user_id: session[:user_id])
     if params[:situacao].present?
       @animals = Animal.where(situacao: params[:situacao])
-      @animals = @animals.where(ong_id: @ong_ids)
+      @animals = @animals.where(ong_id: @ong.ids)
     end
     if params[:nome].present?
       @animals = Animal.where("nome LIKE ?", "%#{params[:nome]}%")if params[:nome].present?
-      @animals = @animals.where(ong_id: @ong_ids)
+      @animals = @animals.where(ong_id: @ong.ids)
     else
       @animals = Animal.all
-      @animals = @animals.where(ong_id: @ong_ids)
+      @animals = @animals.where(ong_id: @ong.ids)
     end
 
   end
