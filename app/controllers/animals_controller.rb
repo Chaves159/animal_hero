@@ -5,14 +5,17 @@ class AnimalsController < ApplicationController
   # GET /animals
   # GET /animals.json
   def index
+    @ong = Ong.where(user_id: session[:user_id])
     if params[:situacao].present?
       @animals = Animal.where(situacao: params[:situacao])
+      @animals = @animals.where(ong_id: @ong_ids)
     end
     if params[:nome].present?
       @animals = Animal.where("nome LIKE ?", "%#{params[:nome]}%")if params[:nome].present?
-
+      @animals = @animals.where(ong_id: @ong_ids)
     else
       @animals = Animal.all
+      @animals = @animals.where(ong_id: @ong_ids)
     end
 
   end
@@ -36,7 +39,7 @@ class AnimalsController < ApplicationController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-    # @animal.ong_id = session[:ong_id]
+
     respond_to do |format|
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
@@ -83,6 +86,6 @@ class AnimalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def animal_params
-      params.require(:animal).permit(:nome, :raca, :especie, :sexo, :peso, :data_nascimento, :situacao, :ong_id, :ong_nome)
+      params.require(:animal).permit(:nome, :raca, :especie, :sexo, :peso, :data_nascimento, :situacao, :ong_id)
     end
 end
