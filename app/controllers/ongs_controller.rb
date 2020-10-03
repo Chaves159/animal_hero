@@ -4,10 +4,9 @@ class OngsController < ApplicationController
   # GET /ongs
   # GET /ongs.json
   def index
-    if params[:nome].nil?
-      @ongs = Ong.where(user_id: session[:user_id])
-    else
-      @ongs = Ong.where("nome LIKE ?", "%#{params[:nome]}%")
+    @ongs = Ong.where(user_id: session[:user_id])
+    if params[:nome].present?
+      @ongs = @ongs.where("nome LIKE ?", "%#{params[:nome]}%")
     end
     # binding.pry
   end
